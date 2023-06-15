@@ -37,6 +37,11 @@ LANGUAGE_GROUP_EUR_NAME=European
 LANGUAGE_GROUPS=CUSTOM CJK CYRILLIC EUR
 
 
+# Define for host Python
+ifndef HOST_PYTHON
+HOST_PYTHON:=python3
+endif
+
 # Defines for host tools
 ifeq ($(HOST_CC),)
 HOST_CC := gcc
@@ -425,6 +430,7 @@ endif
 ifeq ($(model),$(filter $(model),$(ALL_PINECIL_MODELS) $(ALL_PINECIL_V2_MODELS)))
 COMPILER_PREFIX=riscv-none-elf
 endif
+
 # programs ---------------------------------------------------------------------
 CC=$(COMPILER_PREFIX)-gcc
 CPP=$(COMPILER_PREFIX)-g++
@@ -551,7 +557,7 @@ firmware-%: $(HEXFILE_DIR)/$(model)_%.hex $(HEXFILE_DIR)/$(model)_%.bin $(HEXFIL
 	$(SIZE) $<
 
 %.dfu : %.bin Makefile
-	python3 dfuse-pack.py -b $(DEVICE_DFU_ADDRESS)@0:$< -D $(DEVICE_DFU_VID_PID) $@
+	$(HOST_PYTHON) dfuse-pack.py -b $(DEVICE_DFU_ADDRESS)@0:$< -D $(DEVICE_DFU_VID_PID) $@
 
 $(HEXFILE_DIR)/$(model)_%.elf : \
 		$(OUT_OBJS_S) $(OUT_OBJS) $(OUT_OBJS_CPP) \
@@ -612,7 +618,7 @@ Core/Gen/Translation.%.cpp $(OUTPUT_DIR)/Core/Gen/translation.files/%.pickle: ..
 	@test -d Core/Gen || mkdir -p Core/Gen
 	@test -d $(OUTPUT_DIR)/Core/Gen/translation.files || mkdir -p $(OUTPUT_DIR)/Core/Gen/translation.files
 	@echo 'Generating translations for language $*'
-	@python3 ../Translations/make_translation.py \
+	@$(HOST_PYTHON) ../Translations/make_translation.py \
 		-o $(PWD)/Core/Gen/Translation.$*.cpp \
 		--output-pickled $(OUTPUT_DIR)/Core/Gen/translation.files/$*.pickle \
 		$*
@@ -639,7 +645,7 @@ $(HOST_OUTPUT_DIR)/brieflz/libbrieflz.so: Core/brieflz/brieflz.c Core/brieflz/de
 Core/Gen/Translation_brieflz.%.cpp: $(OUTPUT_DIR)/Core/Gen/translation.files/%.o $(OUTPUT_DIR)/Core/Gen/translation.files/%.pickle $(HOST_OUTPUT_DIR)/brieflz/libbrieflz.so
 	@test -d $(@D) || mkdir -p $(@D)
 	@echo Generating BriefLZ compressed translation for $*
-	@OBJCOPY=$(OBJCOPY) python3 ../Translations/make_translation.py \
+	@OBJCOPY=$(OBJCOPY) $(HOST_PYTHON) ../Translations/make_translation.py \
 		-o $(PWD)/Core/Gen/Translation_brieflz.$*.cpp \
 		--input-pickled $(OUTPUT_DIR)/Core/Gen/translation.files/$*.pickle \
 		--strings-obj $(OUTPUT_DIR)/Core/Gen/translation.files/$*.o \
@@ -648,7 +654,7 @@ Core/Gen/Translation_brieflz.%.cpp: $(OUTPUT_DIR)/Core/Gen/translation.files/%.o
 Core/Gen/Translation_brieflz_font.%.cpp: $(OUTPUT_DIR)/Core/Gen/translation.files/%.pickle $(HOST_OUTPUT_DIR)/brieflz/libbrieflz.so
 	@test -d $(@D) || mkdir -p $(@D)
 	@echo Generating BriefLZ compressed translation for $*
-	@python3 ../Translations/make_translation.py \
+	@$(HOST_PYTHON) ../Translations/make_translation.py \
 		-o $(PWD)/Core/Gen/Translation_brieflz_font.$*.cpp \
 		--input-pickled $(OUTPUT_DIR)/Core/Gen/translation.files/$*.pickle \
 		--compress-font \
@@ -693,7 +699,7 @@ Core/Gen/Translation_multi.$(1).cpp: $(patsubst %,../Translations/translation_%.
 	@test -d Core/Gen || mkdir -p Core/Gen
 	@test -d $(OUTPUT_DIR)/Core/Gen/translation.files || mkdir -p $(OUTPUT_DIR)/Core/Gen/translation.files
 	@echo 'Generating translations for multi-language $(2)'
-	@python3 ../Translations/make_translation.py \
+	@$(HOST_PYTHON) ../Translations/make_translation.py \
 		-o $(PWD)/Core/Gen/Translation_multi.$(1).cpp \
 		--output-pickled $(OUTPUT_DIR)/Core/Gen/translation.files/multi.$(1).pickle \
 		$(3)
@@ -703,7 +709,7 @@ $(OUTPUT_DIR)/Core/Gen/translation.files/multi.$(1).pickle: Core/Gen/Translation
 Core/Gen/Translation_brieflz_multi.$(1).cpp: $(OUTPUT_DIR)/Core/Gen/translation.files/multi.$(1).o $(OUTPUT_DIR)/Core/Gen/translation.files/multi.$(1).pickle $(HOST_OUTPUT_DIR)/brieflz/libbrieflz.so
 	@test -d $$(@D) || mkdir -p $$(@D)
 	@echo Generating BriefLZ compressed translation for multi-language $(2)
-	@OBJCOPY=$(OBJCOPY) python3 ../Translations/make_translation.py \
+	@OBJCOPY=$(OBJCOPY) $(HOST_PYTHON) ../Translations/make_translation.py \
 		-o $(PWD)/Core/Gen/Translation_brieflz_multi.$(1).cpp \
 		--input-pickled $(OUTPUT_DIR)/Core/Gen/translation.files/multi.$(1).pickle \
 		--strings-obj $(OUTPUT_DIR)/Core/Gen/translation.files/multi.$(1).o \
@@ -717,10 +723,14 @@ endef # multi_lang_rule
 $(foreach group_code,$(LANGUAGE_GROUPS),$(eval $(call multi_lang_rule,$(group_code),$(LANGUAGE_GROUP_$(group_code)_NAME),$(LANGUAGE_GROUP_$(group_code)_LANGS))))
 
 
-clean :
+clean:
 	rm -Rf Core/Gen
 	rm -Rf $(OUTPUT_DIR_BASE)
 	rm -Rf $(HEXFILE_DIR)/*
+	rm -Rf ../Translations/__pycache__
+
+clean-all: clean
+	rm -Rf $(HEXFILE_DIR)
 
 style:
 	@for src in $(ALL_SOURCE) $(ALL_INCLUDES); do \
@@ -740,7 +750,7 @@ check-style:
 	done
 	@echo "Style check passed"
   
-.PHONY: style all clean default
+.PHONY: style all clean default clean-all
 .SECONDARY:
 
 # pull in dependency info for *existing* .o files
