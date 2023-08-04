@@ -9,8 +9,10 @@
 
 #ifndef SETTINGS_H_
 #define SETTINGS_H_
+
 #include <stdbool.h>
 #include <stdint.h>
+
 #define SETTINGSVERSION (0x2A) // This number is frozen, do not edit
 
 enum SettingsOptions {
@@ -53,22 +55,26 @@ enum SettingsOptions {
   CalibrateCJC                   = 36, // Toggle calibrate CJC at next boot
   BluetoothLE                    = 37, // Toggle BLE if present
   PDVpdo                         = 38, // Toggle PPS & EPR
-  ProfilePhases                  = 39, // Number of profile mode phases
-  ProfilePreheatTemp             = 40, // Temperature to preheat to before the first phase
-  ProfilePreheatSpeed            = 41, // Maximum allowed preheat speed in degrees per second
-  ProfilePhase1Temp              = 42, // Temperature to target for the end of phase 1
-  ProfilePhase1Duration          = 43, // Target duration for phase 1
-  ProfilePhase2Temp              = 44, // Temperature to target for the end of phase 2
-  ProfilePhase2Duration          = 45, // Target duration for phase 2
-  ProfilePhase3Temp              = 46, // Temperature to target for the end of phase 3
-  ProfilePhase3Duration          = 47, // Target duration for phase 3
-  ProfilePhase4Temp              = 48, // Temperature to target for the end of phase 4
-  ProfilePhase4Duration          = 49, // Target duration for phase 4
-  ProfilePhase5Temp              = 50, // Temperature to target for the end of phase 5
-  ProfilePhase5Duration          = 51, // Target duration for phase 5
-  ProfileCooldownSpeed           = 52, // Maximum allowed cooldown speed in degrees per second
-  //
-  SettingsOptionsLength = 53, //
+
+#ifdef PROFILE_SUPPORT
+  ProfilePhases                      , // Number of profile mode phases
+  ProfilePreheatTemp                 , // Temperature to preheat to before the first phase
+  ProfilePreheatSpeed                , // Maximum allowed preheat speed in degrees per second
+  ProfilePhase1Temp                  , // Temperature to target for the end of phase 1
+  ProfilePhase1Duration              , // Target duration for phase 1
+  ProfilePhase2Temp                  , // Temperature to target for the end of phase 2
+  ProfilePhase2Duration              , // Target duration for phase 2
+  ProfilePhase3Temp                  , // Temperature to target for the end of phase 3
+  ProfilePhase3Duration              , // Target duration for phase 3
+  ProfilePhase4Temp                  , // Temperature to target for the end of phase 4
+  ProfilePhase4Duration              , // Target duration for phase 4
+  ProfilePhase5Temp                  , // Temperature to target for the end of phase 5
+  ProfilePhase5Duration              , // Target duration for phase 5
+  ProfileCooldownSpeed               , // Maximum allowed cooldown speed in degrees per second
+#endif
+
+  // ENDING MARKER WITH TOTAL LENGTH of ALL COMPILED-IN OPTIONS
+  SettingsOptionsLength
 };
 
 typedef enum {

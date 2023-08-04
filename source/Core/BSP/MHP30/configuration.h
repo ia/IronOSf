@@ -1,5 +1,8 @@
 #ifndef CONFIGURATION_H_
 #define CONFIGURATION_H_
+
+#define PROFILE_SUPPORT
+
 #include "Settings.h"
 #include <stdint.h>
 /**
@@ -150,7 +153,7 @@
 #define ACCEL_SC7
 #define ACCEL_MSA
 
-#define PROFILE_SUPPORT
+//#define PROFILE_SUPPORT
 
 #define POW_PD     1
 #define POW_PD_EXT 0

@@ -8,12 +8,15 @@
  * devices flash
  */
 
-#include "Settings.h"
+#include "configuration.h"
+
 #include "BSP.h"
+#include "Settings.h"
 #include "Setup.h"
 #include "Translation.h"
-#include "configuration.h"
+
 #include <string.h> // for memset
+
 bool sanitiseSettings();
 
 #ifdef POW_QC_20V
@@ -90,22 +93,32 @@ static const SettingConstants settingsConstants[(int)SettingsOptions::SettingsOp
     {0, 1, 1, 0},                                                          // CalibrateCJC
     {0, 1, 1, 1},                                                          // BluetoothLE
     {0, 1, 1, 1},                                                          // PDVpdo
-    {1, 5, 1, 4},                                                          // ProfilePhases
-    {MIN_TEMP_C, MAX_TEMP_F, 5, 90},                                       // ProfilePreheatTemp
-    {1, 10, 1, 1},                                                         // ProfilePreheatSpeed
-    {MIN_TEMP_C, MAX_TEMP_F, 5, 130},                                      // ProfilePhase1Temp
-    {10, 180, 5, 90},                                                      // ProfilePhase1Duration
-    {MIN_TEMP_C, MAX_TEMP_F, 5, 140},                                      // ProfilePhase2Temp
-    {10, 180, 5, 30},                                                      // ProfilePhase2Duration
-    {MIN_TEMP_C, MAX_TEMP_F, 5, 165},                                      // ProfilePhase3Temp
-    {10, 180, 5, 30},                                                      // ProfilePhase3Duration
-    {MIN_TEMP_C, MAX_TEMP_F, 5, 140},                                      // ProfilePhase4Temp
-    {10, 180, 5, 30},                                                      // ProfilePhase4Duration
-    {MIN_TEMP_C, MAX_TEMP_F, 5, 90},                                       // ProfilePhase5Temp
-    {10, 180, 5, 30},                                                      // ProfilePhase5Duration
-    {1, 10, 1, 2},                                                         // ProfileCooldownSpeed
+#ifdef PROFILE_SUPPORT
+    {1, 5, 1, 4},                     // ProfilePhases
+    {MIN_TEMP_C, MAX_TEMP_F, 5, 90},  // ProfilePreheatTemp
+    {1, 10, 1, 1},                    // ProfilePreheatSpeed
+    {MIN_TEMP_C, MAX_TEMP_F, 5, 130}, // ProfilePhase1Temp
+    {10, 180, 5, 90},                 // ProfilePhase1Duration
+    {MIN_TEMP_C, MAX_TEMP_F, 5, 140}, // ProfilePhase2Temp
+    {10, 180, 5, 30},                 // ProfilePhase2Duration
+    {MIN_TEMP_C, MAX_TEMP_F, 5, 165}, // ProfilePhase3Temp
+    {10, 180, 5, 30},                 // ProfilePhase3Duration
+    {MIN_TEMP_C, MAX_TEMP_F, 5, 140}, // ProfilePhase4Temp
+    {10, 180, 5, 30},                 // ProfilePhase4Duration
+    {MIN_TEMP_C, MAX_TEMP_F, 5, 90},  // ProfilePhase5Temp
+    {10, 180, 5, 30},                 // ProfilePhase5Duration
+    {1, 10, 1, 2}                     // ProfileCooldownSpeed
+#endif
 };
+
 static_assert((sizeof(settingsConstants) / sizeof(SettingConstants)) == ((int)SettingsOptions::SettingsOptionsLength));
+
+#ifdef PROFILE_SUPPORT
+static_assert((SettingsOptions::ProfilePhase1Temp) == 42); // TODO: REMOVE ME: TEMP. DEBUG FOR PoC
+static_assert((SettingsOptions::SettingsOptionsLength) == 53);
+#else
+static_assert((SettingsOptions::SettingsOptionsLength) == 39);
+#endif
 
 void saveSettings() {
 #ifdef CANT_DIRECT_READ_SETTINGS

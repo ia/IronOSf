@@ -1218,7 +1218,13 @@ def get_translation_strings_and_indices_text(
                 + translated_index.str_start_offset
             )
 
+            if record["id"] == "ProfilePhases":
+                output_text += "#ifdef PROFILE_SUPPORT\n"
+
             output_text += f"      /* {record['id'].ljust(max_len)[:max_len]} */ {start_index}, // {escape(raw_string)}\n"
+
+            if record["id"] == "ProfileCooldownSpeed":
+                output_text += "#endif /* PROFILE_SUPPORT */\n"
 
         output_text += f"    }}, // {name}\n\n"
         return output_text
@@ -1254,12 +1260,25 @@ def get_translation_strings_and_indices_text(
 
 def get_translation_sanity_checks_text(defs: dict) -> str:
     sanity_checks_text = "\n// Verify SettingsItemIndex values:\n"
+    sanity_checks_text += "#define OFFSET_PROFILE 0\n"
+
     for i, mod in enumerate(defs["menuOptions"]):
         eid = mod["id"]
-        sanity_checks_text += (
-            f"static_assert(static_cast<uint8_t>(SettingsItemIndex::{eid}) == {i});\n"
-        )
-    sanity_checks_text += f"static_assert(static_cast<uint8_t>(SettingsItemIndex::NUM_ITEMS) == {len(defs['menuOptions'])});\n"
+
+        if eid == "ProfilePhases":
+            sanity_checks_text += "#ifdef PROFILE_SUPPORT\n"
+
+        sanity_checks_text += f"static_assert(static_cast<uint8_t>(SettingsItemIndex::{eid}) == {i} - OFFSET_PROFILE);\n"
+
+        if eid == "ProfileCooldownSpeed":
+            sanity_checks_text += "#else\n"
+            sanity_checks_text += "#ifdef OFFSET_PROFILE\n"
+            sanity_checks_text += "#undef OFFSET_PROFILE\n"
+            sanity_checks_text += "#endif\n"
+            sanity_checks_text += "#define OFFSET_PROFILE 14\n"
+            sanity_checks_text += "#endif /* PROFILE_SUPPORT */\n"
+
+    sanity_checks_text += f"static_assert(static_cast<uint8_t>(SettingsItemIndex::NUM_ITEMS) == {len(defs['menuOptions'])} - OFFSET_PROFILE);\n"
     return sanity_checks_text
 
 

@@ -11,6 +11,8 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#include "configuration.h"
+
 extern const bool HasFahrenheit;
 
 extern const char *SmallSymbolPlus;
@@ -41,7 +43,7 @@ extern const char *LargeSymbolDC;
 extern const char *SmallSymbolDC;
 extern const char *LargeSymbolCellCount;
 extern const char *SmallSymbolCellCount;
-//
+
 extern const char *SmallSymbolVersionNumber;
 extern const char *SmallSymbolPDDebug;
 extern const char *SmallSymbolState;
@@ -63,6 +65,7 @@ enum class SettingsItemIndex : uint8_t {
   TempChangeShortStep,
   TempChangeLongStep,
   LockingMode,
+#ifdef PROFILE_SUPPORT
   ProfilePhases,
   ProfilePreheatTemp,
   ProfilePreheatSpeed,
@@ -77,6 +80,7 @@ enum class SettingsItemIndex : uint8_t {
   ProfilePhase5Temp,
   ProfilePhase5Duration,
   ProfileCooldownSpeed,
+#endif
   MotionSensitivity,
   SleepTemperature,
   SleepTimeout,
