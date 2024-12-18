@@ -520,6 +520,7 @@ void OLED::setRotation(bool leftHanded) {
 }
 
 void OLED::setBrightness(uint8_t contrast) {
+  contrast = (MAX_BRIGHTNESS < contrast) ? MAX_BRIGHTNESS : contrast;
   if (OLED_Setup_Array[15].val != contrast) {
     OLED_Setup_Array[15].val = contrast;
     I2C_CLASS::writeRegistersBulk(DEVICEADDR_OLED, &OLED_Setup_Array[14], 2);
