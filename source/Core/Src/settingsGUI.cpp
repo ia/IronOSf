@@ -871,8 +871,11 @@ static void displayAnimationLoop(void) { OLED::drawCheckbox(getSettingValue(Sett
 
 static void displayBrightnessLevel(void) {
   OLED::printNumber((getSettingValue(SettingsOptions::OLEDBrightness) / BRIGHTNESS_STEP + 1), 1, FontStyle::LARGE);
+  auto value = getSettingValue(SettingsOptions::OLEDBrightness);
+  // Validate brightness before setting
+  setSettingValue(SettingsOptions::OLEDBrightness, value);
   // While not optimal to apply this here, it is _very_ convenient
-  OLED::setBrightness(getSettingValue(SettingsOptions::OLEDBrightness));
+  OLED::setBrightness(value);
 }
 
 static void displayInvertColor(void) {
