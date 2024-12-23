@@ -1,2 +1,37 @@
-# Ignore all differences in line endings
-*        -crlf
+# Set the default behavior, in case people don't have core.autocrlf set.
+
+* text=auto
+
+
+# Explicitly declare source files as text to always be normalized and converted to native line endings on checkout.
+
+Makefile       text  eol=lf
+.clang-format  text  eol=lf
+*.Dockerfile   text  eol=lf
+
+*.c    text  eol=lf
+*.h    text  eol=lf
+
+*.cpp  text  eol=lf
+*.hpp  text  eol=lf
+
+*.S    text  eol=lf
+*.ld   text  eol=lf
+*.md   text  eol=lf
+*.py   text  eol=lf
+*.sh   text  eol=lf
+*.bdf  text  eol=lf
+*.cfg  text  eol=lf
+*.txt  text  eol=lf
+*.yml  text  eol=lf
+*.html text  eol=lf
+*.json text  eol=lf
+
+*.bmp binary  eol=lf
+*.pdf binary  eol=lf
+*.png binary  eol=lf
+*.pro binary  eol=lf
+*.sch binary  eol=lf
+*.svc binary  eol=lf
+*.svd binary  eol=lf
+
