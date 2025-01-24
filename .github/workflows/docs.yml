@@ -34,4 +34,4 @@ jobs:
       - run: git config user.name 'github-actions[bot]' && git config user.email 'github-actions[bot]@users.noreply.github.com'
 
       - name: Publish docs
-        run: mkdocs gh-deploy -f scripts/IronOS-mkdocs.yml -d ../site
+        run: python --version && mkdocs gh-deploy -f scripts/IronOS-mkdocs.yml -d ../site
