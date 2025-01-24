@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="IronOS Open Source Soldering Iron firmware for Miniware and Pinecil" /><link rel="canonical" href="https://ralim.github.io/IronOS/" />
+      <link rel="shortcut icon" href="img/favicon.ico" />
+    <title>IronOS</title>
+    <link rel="stylesheet" href="css/theme.css" />
+    <link rel="stylesheet" href="css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Home";
+        var mkdocs_page_input_path = "index.md";
+        var mkdocs_page_url = "/IronOS/";
+      </script>
+    
+    <script src="js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="." class="icon icon-home"> IronOS
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href=".">Home</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting Started</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#key-features">Key Features</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#menu-system">Menu System</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#feedback">Feedback</a>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="GettingStarted/">Getting Started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Flashing the firmware</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="Flashing/MHP30/">MHP30</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Flashing/Pinecil%20V1/">Pinecil V1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Flashing/Pinecil%20V2/">Pinecil V2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Flashing/TS80%28P%29/">TS80(P)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Flashing/TS100/">TS100</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Operation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="Menu/">Main Menu</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Settings/">Settings</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="DebugMenu/">Debug Menu</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Power/">Power</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Temperature/">Temperature</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="Logo/">Startup Logo</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Hardware</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="HallSensor/">Hall Sensor (Pinecil)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Bluetooth/">Bluetooth (Pinecil V2)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Hardware/">Hardware Notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="Troubleshooting/">Troubleshooting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="HardwareIssues/">Known Hardware Issues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="PowerSources/">Power sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="PortingToNewDevice/">New Hardware Requirements</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="Translation/">Translations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="Development/">Development</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="History/">Changelog</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href=".">IronOS</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li>Home</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/ralim/IronOS/edit/dev/Documentation/index.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ironos-flexible-soldering-iron-control-firmware">IronOS - Flexible Soldering iron control Firmware</h1>
+<p>The firmware implements all of the standard features of a 'smart' soldering iron, with lots of little extras and tweaks.
+I highly recommend reading the installation guide fully when installing on your iron. And after install just explore the settings menu.</p>
+<p>For soldering irons that are designed to be powered by 'smart' power sources (PD and QC), the firmware supports settings around the negotiated power and voltage.
+For soldering irons that are designed to be powered by batteries (TS100 &amp; Pinecil), settings for a cutoff voltage for battery protection are supported.</p>
+<p>Currently <strong>31</strong> languages are supported. When downloading the firmware for your soldering iron, take note of the language code in the file name.</p>
+<p>This project is considered stable &amp; feature complete for everyday use with a supported device, <em>so please suggest any feature improvements you would like!</em></p>
+<p><em>This firmware does <strong>NOT</strong> support the USB port while running for changing settings. This is done through the onscreen menu only. Logos are edited on a computer and flashed like firmware.</em></p>
+<table>
+<thead>
+<tr>
+<th align="center">Device</th>
+<th align="center">DC</th>
+<th align="center">QC</th>
+<th align="center">PD</th>
+<th align="center">EPR</th>
+<th align="center">BLE</th>
+<th align="center">Battery</th>
+<th align="center">Recommended</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">MHP30</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">✔️</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">✔️</td>
+</tr>
+<tr>
+<td align="center">Pinecil V1</td>
+<td align="center">✔️</td>
+<td align="center">✔️</td>
+<td align="center">✔️</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">✔️</td>
+<td align="center">✔️</td>
+</tr>
+<tr>
+<td align="center">Pinecil V2</td>
+<td align="center">✔️</td>
+<td align="center">✔️</td>
+<td align="center">✔️</td>
+<td align="center">✔️</td>
+<td align="center">✔️</td>
+<td align="center">✔️</td>
+<td align="center">✔️</td>
+</tr>
+<tr>
+<td align="center">TS80P</td>
+<td align="center">❌</td>
+<td align="center">✔️</td>
+<td align="center">✔️</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">✔️</td>
+<td align="center">✔️</td>
+</tr>
+<tr>
+<td align="center">TS100</td>
+<td align="center">✔️</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">✔️</td>
+<td align="center">❌</td>
+</tr>
+<tr>
+<td align="center">TS80</td>
+<td align="center">❌</td>
+<td align="center">✔️</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">❌</td>
+<td align="center">✔️</td>
+<td align="center">❌</td>
+</tr>
+</tbody>
+</table>
+<p>*Please note that Miniware started shipping TS100's using cloned STM32 Chips. While these do work with IronOS, their DFU bootloader works terribly, and it is hard to get it to successfully flash larger firmware images like IronOS without timing out. This is the main reason why the TS100 is <strong><em>no longer recommended</em></strong>.</p>
+<h2 id="getting-started">Getting Started</h2>
+<p>To get started with IronOS firmware, please jump to <a href="https://ralim.github.io/IronOS/GettingStarted/">Getting Started Guide</a>.
+But the <a href="https://www.merriam-webster.com/dictionary/TL%3BDR">TL;DR</a> is to press the button near the front of the iron to heat up. Use the button near the back of the iron to enter the settings menu.
+Long hold the rear button in soldering mode to exit back to the start screen.</p>
+<h2 id="installation">Installation</h2>
+<p>For notes on installation for your device, please refer to the flashing guide for your device:</p>
+<ul>
+<li><a href="https://ralim.github.io/IronOS/Flashing/MHP30">MHP30</a></li>
+<li><a href="https://ralim.github.io/IronOS/Flashing/Pinecil%20V1/">Pinecil V1</a></li>
+<li><a href="https://ralim.github.io/IronOS/Flashing/Pinecil%20V2/">Pinecil V2</a></li>
+<li><a href="https://ralim.github.io/IronOS/Flashing/TS80%28P%29/">TS80 / TS80P</a></li>
+<li><a href="https://ralim.github.io/IronOS/Flashing/TS100">TS100</a></li>
+</ul>
+<p>But the <em>generic</em> <a href="https://www.merriam-webster.com/dictionary/TL%3BDR">TL;DR</a> is to:</p>
+<ul>
+<li><a href="https://github.com/Ralim/IronOS/releases">download firmware from here</a> for the correct model with suitable language support;</li>
+<li>put a device into DFU/bootloader mode (usually by keep holding A/+/front button while connecting a device to power source to power device on);</li>
+<li>flash the firmware by drag-n-drop the firmware file using a file manager of your OS <strong>or</strong> using a separate flashing tool.</li>
+</ul>
+<h2 id="key-features">Key Features</h2>
+<ul>
+<li>PID style iron temperature control</li>
+<li>Automatic sleep with selectable sensitivity</li>
+<li>Motion wake support</li>
+<li>All settings exposed in the intuitive menu</li>
+<li>(TS100) Set a voltage lower limit for Lithium batteries so you don't kill your battery pack</li>
+<li>(TS80) Set 18 W or 24 W settings for your power bank</li>
+<li>(TS80P) Automatically negotiates appropriate PD and falls back to QC mode like TS80</li>
+<li>(Pinecil) Supports all 3 power modes (PD, QC, DC In).</li>
+<li>(Pinecilv2) Supports USB-PD EPR for 28V operation.</li>
+<li>Improved readability Fonts, supporting multiple languages</li>
+<li>Use hardware features to improve reliability</li>
+<li>Can disable movement detection if desired</li>
+<li>Boost mode lets you temporarily change the temperature when soldering (i.e. raise the temperature for short periods)</li>
+<li>(TS100/Pinecil) Battery charge level indicator if power source set to a lipo cell count</li>
+<li>(TS80/TS80P/Pinecil) Power bank operating voltage is displayed</li>
+<li><a href="https://ralim.github.io/IronOS/Logo/">Custom boot up logo support</a></li>
+<li>Automatic LCD rotation based on the orientation</li>
+</ul>
+<h2 id="menu-system">Menu System</h2>
+<p>This new firmware uses a new menu system to allow access to the settings on the device.
+When on the main screen and having the tip plugged in, the unit shows a pair of prompts for the two most common operations.</p>
+<ul>
+<li>Pressing the button near the tip enters the <em>soldering mode</em></li>
+<li>Pressing the button near the USB end enters the <em>settings menu</em></li>
+<li>When not in <em>soldering mode</em>, holding down the button near the tip will enter <em>soldering temperature adjust mode</em> (This is the same as the one in the <em>soldering mode</em>, but allows to adjust the temperature before heating up), in <em>soldering mode</em> however this will activate <em>boost mode</em> as long as you hold down the button.</li>
+<li>Holding down the button near the USB end will show the <em><a href="https://ralim.github.io/IronOS/DebugMenu/">debug menu</a>.</em> In <em>soldering mode</em> this ends the heating.</li>
+</ul>
+<p>Operation details are over in the <a href="https://ralim.github.io/IronOS/Menu/">Menu information.</a></p>
+<h2 id="feedback">Feedback</h2>
+<p>If you would like to:</p>
+<ul>
+<li>report any issue related to IronOS</li>
+<li>request a feature</li>
+<li>provide some suggestion</li>
+</ul>
+<p>then you can <a href="https://github.com/Ralim/IronOS/issues/new/choose">fill this form</a> using github account*.</p>
+<p>And if you would like to:</p>
+<ul>
+<li>ask more generic question about IronOS/supported hardware/something you're curious about/etc.</li>
+<li>reach out community to chat with</li>
+<li>share your soldering &amp; DIY skills</li>
+<li>share some interesting finding</li>
+<li>share useful related hardware/software with others</li>
+</ul>
+<p>or <em>anything</em> like that, then you can use forum-like <a href="https://github.com/Ralim/IronOS/discussions">Discussions here</a>.</p>
+<p>*: You may need to create it first if you don't have one - it's free of charge.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="GettingStarted/" class="btn btn-neutral float-right" title="Getting Started">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/ralim/IronOS/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+    
+      <span><a href="GettingStarted/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.4.3
+Build Date UTC : 2025-01-24 22:03:19.051602+00:00
+-->

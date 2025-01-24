@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://ralim.github.io/IronOS/Troubleshooting/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Troubleshooting - IronOS</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Troubleshooting";
+        var mkdocs_page_input_path = "Troubleshooting.md";
+        var mkdocs_page_url = "/IronOS/Troubleshooting/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> IronOS
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../GettingStarted/">Getting Started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Flashing the firmware</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Flashing/MHP30/">MHP30</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Flashing/Pinecil%20V1/">Pinecil V1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Flashing/Pinecil%20V2/">Pinecil V2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Flashing/TS80%28P%29/">TS80(P)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Flashing/TS100/">TS100</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Operation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Menu/">Main Menu</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Settings/">Settings</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../DebugMenu/">Debug Menu</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Power/">Power</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Temperature/">Temperature</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Logo/">Startup Logo</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Hardware</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../HallSensor/">Hall Sensor (Pinecil)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Bluetooth/">Bluetooth (Pinecil V2)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Hardware/">Hardware Notes</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Troubleshooting</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#tip-shorted-warning">Tip Shorted warning</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#high-tip-temp-reading-when-the-tip-is-cool">High tip temp reading when the tip is cool</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#rtip-is-out-of-spec">RTip is out of spec</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#chan-is-out-of-spec">CHan is out of spec</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#no-display-or-dots-on-the-display">No display OR dots on the display</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#tip-heats-when-not-in-heating-mode">Tip heats when not in heating mode</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#accelerometer-not-detected">Accelerometer not detected</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../HardwareIssues/">Known Hardware Issues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PowerSources/">Power sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PortingToNewDevice/">New Hardware Requirements</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Translation/">Translations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Development/">Development</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../History/">Changelog</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">IronOS</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+          <li>Hardware &raquo;</li>
+      <li>Troubleshooting</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/ralim/IronOS/edit/dev/Documentation/Troubleshooting.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="troubleshooting">Troubleshooting</h1>
+<p>If your device is not operating as expected; and you are within the manufacturer support window, please first contact your manufacturer and RMA / warranty your device.</p>
+<p>If your iron is not working as expected, <a href="https://ralim.github.io/IronOS/DebugMenu/">the Debug menu</a> exposes internal measurements to help you narrow down the root cause of the issue.</p>
+<p>Alongside all of these, issues with the soldering of the main MCU could cause all of these as well; and should always be checked.</p>
+<p>The tip is important for the operation of your iron. T100 and Pinecil tips are around 8 ohms, and TS80(P) tips are around 4.5 ohms.</p>
+<p>You are welcome to open discussions about issues as well, or if you bought your Pinecil from an official store; use the <a href="https://wiki.pine64.org/wiki/Pinecil#Community_links">Pinecil community chat</a> for support.
+But it is helpful to do some basic diagnostics first just in case the issue is easily fixed.</p>
+<p>The <strong>VAST</strong> majority of issues are poor soldering or cold solder joints.
+If you can open up your iron, give it a good look at all the connection points, and use another iron to reflow any suspicious ones, this can fix most issues.</p>
+<h2 id="tip-shorted-warning">Tip Shorted warning</h2>
+<p>If you are powering up a device that supports tip resistance detection (TS101 and Pinecilv2 as of present), the firmware checks the readings of the raw tip resistance and sorts these into three "bins". <code>8 ohm tips</code>, <code>6.2 ohm tips</code> and <code>tip-shorted</code>. The tip resistance is used when negotiating USB-PD and in thermal calculations.
+The <code>tip-shorted</code> option is selected if your tip is measured to be abnormally small. This could indicate a failed driver mosfet or a failed tip.</p>
+<p>When this warning is shown; heating will be disabled to protect from damage. As trying to heat a shorted tip can damage the iron itself.</p>
+<p>It is best to take out your tip and manually measure and verify the tip's resistance. It should be 6-8 ohms (depending on tip type). When measuring resistances this small some multimeters can struggle. If you have access to a current limited bench power supply, you can try doing a 4 wire measurement by measuring the voltage drop on the tip while applying a known current. <code>(R=V/I)</code>.</p>
+<p>If the tip measures correctly you may have a damaged driver mosfet; it would be ideal to open your iron and test the mosfet is operating correctly.
+If after both of these checks everything looks as expected, feel free to open a discussion on IronOS to talk about the issue (Or for Pinecil the community chat can be a much faster response).</p>
+<h2 id="high-tip-temp-reading-when-the-tip-is-cool">High tip temp reading when the tip is cool</h2>
+<p>If you are finding the tip is reading high; the first fields to check in the Debug menu are <code>RTip</code> and <code>CHan</code>.</p>
+<ul>
+<li><code>RTip</code> is the raw tip reading in μV; at cool this should be around 700-1000 for larger tips and ~1500 for smaller tips (TS80's)</li>
+<li><code>CHan</code> is the temperature of the temperature sensor on the PCB in degrees Celsius * 10. So 29 °C ambient should read as 290</li>
+</ul>
+<h3 id="rtip-is-out-of-spec">RTip is out of spec</h3>
+<p><code>RTip</code> will over-read on bad contacts or no tip inserted.</p>
+<p>If <code>RTip</code> is overreading, you may have one of the following:</p>
+<ul>
+<li>Partially stuck on main MOSFET</li>
+<li>Slow reacting main MOSFET driver transistor</li>
+<li>Damaged Op-Amp</li>
+<li>Poor soldering on the Op-Amp circuitry</li>
+<li>No tip inserted or tip that is not connecting correctly</li>
+</ul>
+<p>If <code>RTip</code> is under-reading you most likely have issues with the Op-Amp or the tip. The signal should be pulled high by hardware (reading hot), so this often means the MCU is not reading the signal correctly. Check MCU soldering.</p>
+<h3 id="chan-is-out-of-spec">CHan is out of spec</h3>
+<p>CHan reading comes directly from the cold junction compensation temperature sensor.
+This is usually a TMP36 (Pinecil V1), or an NTC thermistor (MHP30, TS80P, Pinecil V2).</p>
+<p>If <code>CHan</code> is reading low:</p>
+<ul>
+<li>Check the connection from the MCU to the handle temperature sensor.</li>
+<li>Check the power pin connection on the TMP36</li>
+<li>Check pullup resistor on the NTC thermistor</li>
+<li>Check no bridged pins or weak shorts on the signal to nearby pins on MCU or temperature sensor</li>
+<li>Reflow/resolder the aforementioned components</li>
+</ul>
+<p>If <code>CHan</code> is reading higher</p>
+<ul>
+<li>Check ground connections on the sensors</li>
+<li>Check no bridged pins or weak shorts on the signal to nearby pins on MCU or temperature sensor</li>
+<li>Reflow/resolder the aforementioned components</li>
+</ul>
+<h2 id="no-display-or-dots-on-the-display">No display OR dots on the display</h2>
+<p>If when you power up your iron you get no display, the first test is to (carefully) attempt to heat the tip.
+Press the front button (<code>+/A</code>) on your device and check if the tip heats up.
+If the tip does not heat up, it is worth trying to reflash the firmware first in case it is corrupted.</p>
+<p>The main failure mode of the OLED display module is usually poor soldering on the OLED display cable to the main PCB.
+As this is soldered by hand generally, it's the most prone to failures.</p>
+<p>If you have a poor connection or a floating pin, you can end up with a state where the screen works <em>sometimes</em> and then freezes or only works on some power cycles. It might work on very old versions of IronOS but not the newest ones. You could try to reflow the pins for the OLED. On 96x16 screens, carefully peel it back from the adhesive and reflow the solder on the pins.</p>
+<p>As the OLED runs on an I2C bus, there are pull up resistors on the SDA and SCL pins. It is worth checking these as well, while they don't often fail, issues with these can cause <em>weird</em> display issues.</p>
+<p>If after all of the checks OLED is still blank, or screen works but pixels are barely visible, although soldering iron itself is working (i.e., you can safely check that it's turning on, heating up &amp; melting solder successfully), then it means that <em>most likely</em> OLED is dead. But it can be relatively easily replaced. Models like <code>TS100</code>, <code>TS80</code>, and <code>TS80P</code> share the same OLED screen which can be bought online and used for replacement. To do so:</p>
+<ul>
+<li>
+<p>find &amp; buy at electronics shop [of your choice] display with the following spec line:<br />
+<code>OLED 0.69 inch / 14 pins / 96 x 16 pixels / **9616TSWC** / I2C IIC</code></p>
+</li>
+<li>
+<p>disassemble your soldering iron;</p>
+</li>
+<li>desolder old OLED and solder back new one;</li>
+<li>assemble your soldering iron back.</li>
+</ul>
+<p>There are a few youtube videos how to do it like <a href="https://www.youtube.com/watch?v=HlWAY0oYPFI">this one for <code>TS100</code></a>.</p>
+<p>Unfortunately, this is a well-known issue of screens with OLED technology: sooner or later the brightness is starting to <em>"fade out"</em> until complete off. Usually common recommendations to prolong its lifetime are: reduce brightness &amp; reduce too often updates (i.e., disable animations). But your results may vary since there were reports when users couldn't see anything after turning on soldering irons which were just laying in a box for a few months after buying. And there are users with first <code>TS100</code> models not having any issues with display at all.</p>
+<h2 id="tip-heats-when-not-in-heating-mode">Tip heats when not in heating mode</h2>
+<p>⚠️ DISCONNECT YOUR TIP ⚠️</p>
+<p>Most likely you have either a blown MOSFET or shorted pin.
+Check the MOSFET and also its driver transistor.
+The firmware will not enable the tip until you are in soldering mode.</p>
+<h2 id="accelerometer-not-detected">Accelerometer not detected</h2>
+<p>Your Iron may have a new accelerometer that is not supported yet (happens every year or so) OR there is a soldering issue with the accelerometer (reflow/resolder).</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Hardware/" class="btn btn-neutral float-left" title="Hardware Notes"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../HardwareIssues/" class="btn btn-neutral float-right" title="Known Hardware Issues">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/ralim/IronOS/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Hardware/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../HardwareIssues/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

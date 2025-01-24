@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://ralim.github.io/IronOS/Logo/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Startup Logo - IronOS</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Startup Logo";
+        var mkdocs_page_input_path = "Logo.md";
+        var mkdocs_page_url = "/IronOS/Logo/";
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/yaml.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> IronOS
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../GettingStarted/">Getting Started</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Flashing the firmware</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Flashing/MHP30/">MHP30</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Flashing/Pinecil%20V1/">Pinecil V1</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Flashing/Pinecil%20V2/">Pinecil V2</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Flashing/TS80%28P%29/">TS80(P)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Flashing/TS100/">TS100</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Operation</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../Menu/">Main Menu</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Settings/">Settings</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../DebugMenu/">Debug Menu</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Power/">Power</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Temperature/">Temperature</a>
+                  </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="./">Startup Logo</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#generating-the-logo-files">Generating the Logo files</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#ts101-quirks">TS101 Quirks</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#flashing-the-logo">Flashing the Logo</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#upload-via-virtual-disk-ts100ts101ts80ts80ps60mhp30">Upload via virtual disk (TS100,TS101,TS80,TS80P,S60,MHP30)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#upload-via-gui-flash-tool-pinecilv1v2">Upload via GUI flash tool (PinecilV1/V2)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#upload-via-dfu-util-pinecilv1ironos-dfu">Upload via dfu-util (PinecilV1/IronOS-DFU)</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#upload-via-blisp-pinecilv2">Upload via blisp (PinecilV2)</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Hardware</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../HallSensor/">Hall Sensor (Pinecil)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Bluetooth/">Bluetooth (Pinecil V2)</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Hardware/">Hardware Notes</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Troubleshooting/">Troubleshooting</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../HardwareIssues/">Known Hardware Issues</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PowerSources/">Power sources</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PortingToNewDevice/">New Hardware Requirements</a>
+                  </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Translation/">Translations</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../Development/">Development</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../History/">Changelog</a>
+                </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">IronOS</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a> &raquo;</li>
+      <li>Startup Logo</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/ralim/IronOS/edit/dev/Documentation/Logo.md" class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="startup-logo-animation">Startup Logo / Animation</h1>
+<p>When the device starts, you can have it optionally show either a static image or an animation. You can also set if these should stay on the screen or dismiss after some amount of time.
+These can be an elegant way to personalise your device or just mark it as your one at a meetup where there may be multiple.</p>
+<p>All devices supported by IronOS support this logo, and follow a similar process for setting one up. Please read the below general information as well as any model specific notes.</p>
+<p>Bootup logos are stored at the end of the flash storage in the Iron; next to the user settings. By locating them at the end of storage they are not erased during the normal firmware upgrade process. Once a logo is set it should stay (unless we need to change things in the main firmware); so to erase your logo you will also find that we generate an erase file. Alternatively your method of flashing <em>may</em> support doing a full erase flash which will also work for this.</p>
+<h2 id="generating-the-logo-files">Generating the Logo files</h2>
+<p>Because logos are stored at a fixed location in the device's internal flash; we can use the same method to flash these as you would normal firmware.
+This does also mean that we need to convert the image/animation file into the format that IronOS understands.</p>
+<p>IronOS uses a pre-processed file format to dramatically reduce the amount of space required to store the image; allowing for animations and saving space.</p>
+<p>In the <a href="https://github.com/Ralim/IronOS-Meta">IronOS-Meta</a> repository is a <code>python</code> script to convert images into this pre-processed file format.
+Additionally, memebers of the community have contributed back their logo images as well. We provide these pre-converted for all models and ready to use in <a href="https://github.com/Ralim/IronOS-Meta/releases">IronOS-Meta/releases</a>.
+Download the zip for Pinecil or Miniware and then install using the instructions in the Flashing section below.</p>
+<p>If you want to make custom art then it needs to be converted with the Python script.
+You can checkout the repository or use the download-as-zip button in the Github web interface to download the code.</p>
+<p>Inside the download code is a <code>Boot Logos</code> folder, inside here is the python script required for logo conversion.
+It is easiest if you copy your logo file to be converted into this folder too, in order to keep commands shorter.</p>
+<p>The image can be in color and any size, but it will be resized and converted to 1-bit color. However, it looks best if you create a 96x16 image (<code>png</code> or <code>bmp</code>) in any image editor and color the pixels black &amp; white manually. The thresholding used for converting colour to B&amp;W may not always work as well as one would hope.</p>
+<p>The converter requires at least Python3 and Pillow apps. Follow online instructions for installing Python and Pillow on your machine. Any reasonably recent version should work well.</p>
+<p>When running the script on the Windows operating system; it is recommended to use <code>Powershell</code> rather than the old <code>Command Prompt</code>.</p>
+<p>For installing pillow; you can install it via your package manager (Debian and similar distros) or via pip. To install via pip the command should be <code>python -m pip install pillow</code>.</p>
+<p>In your shell you can now execute <code>python img2logo.py input.png out -m ${model}</code> to convert the file <code>input.png</code> and create output files in the folder <code>out</code>.
+The model should be replaced by one of the following options:</p>
+<ul>
+<li><code>miniware</code> for older Miniware Irons -&gt; TS100, TS80, TS80P</li>
+<li><code>pinecilv1</code> for the Pinecil V1</li>
+<li><code>pinecilv2</code> for the Pinecil V2</li>
+<li><code>ts101</code> for the Miniware TS101 [^1] [^2]</li>
+<li><code>s60</code> for the Sequre S60 [^1]</li>
+<li><code>mhp30</code> for the Miniware MHP30</li>
+</ul>
+<p>Different models are used for different flash locations for the image storage.
+This means that files are <strong>not</strong> interchangeable between devices. If you are flashing multiple devices you will need to create a different file for different models.</p>
+<p>After processing its expected to have a <code>.hex</code> and <code>.dfu</code> file created to be used. Which one to use will depend on your device.</p>
+<p>Note: make sure your image file is in the same folder as script files (img2logo.py, output_dfu.py, output_hex.py).</p>
+<p>[^1] Note that these devices have larger resolution screens that the logo system supports right now. Fixes are coming for this soon, roughly scheduled for 2.23.
+[^2] The TS101 requires extra steps, see below.</p>
+<h3 id="ts101-quirks">TS101 Quirks</h3>
+<p>When Miniware designed the TS101 they cut cost by using an STM32 clone with some odd quirks. They also re-wrote their USB bootloader, which has introduced new bugs for us to deal with.
+Their bootloader appears to have kept the existing limit of not being able to flash small hex files, but they no longer fall for the older "just repeat the content" trick and instead reject the file.
+Additionally, while the MCU in use has 128K of flash, their bootloader (at least for me) fails to write to anything above 99K. It <em>looks</em> like a watchdog reset or hard crash. Unsure.</p>
+<p>This has flow on effects, where the settings can still be located in the upper ~28K of flash, but it cant be used for anything we flash over USB.
+Of that 100K we can use, they waste 32K of it for their bootloader (Old bootloaders were 16K).
+This means the main "app" of IronOS is limited to around 67K (100K-32K for bootloader, -1K for logo).</p>
+<p>For this device the Logo is not located at the end of flash but instead at the last writable page (99K).</p>
+<p>Additionally, as we need to do a large write, to avoid having to waste more flash space; the logo is merged with the normal firmware. This means that the firmware and logo are flashed together once.
+Future updates can be done without merging as it will leave the logo data there as normal firmware doesnt touch that area of flash.</p>
+<p>To do this, download the latest version of IronOS and merge it with the logo using the <code>--merge</code> command line argument.</p>
+<p>To create the logo file for a TS101 the full command looks like <code>python3 img2logo.py &lt;image file path&gt; &lt;output folder path&gt; -m ts101 --merge &lt;Path to main firmware&gt;</code>.</p>
+<p>For this reason, there are no TS101 logo's generated by the IronOS-Meta repo.</p>
+<h2 id="flashing-the-logo">Flashing the Logo</h2>
+<h3 id="upload-via-virtual-disk-ts100ts101ts80ts80ps60mhp30">Upload via virtual disk (TS100,TS101,TS80,TS80P,S60,MHP30)</h3>
+<p>If you normally update your firmware by having your device show up as a flash drive this is the method for you.
+This applies to all Miniware + S60 devices running the stock DFU bootloader.</p>
+<p>Place your device into update mode (usually by holding the B button when connecting your device to your pc via USB).
+Upload the <code>.hex</code> file you created earlier as if it was a firmware update. Do any normal tricks required for firmware flashing if any are required.
+Afterwards the firmware should indicate that it has worked (often by creating a <code>.rdy</code> file).</p>
+<p>At this point unplug your iron and re-connect it to power to start normally and the logo should welcome you.</p>
+<h3 id="upload-via-gui-flash-tool-pinecilv1v2">Upload via GUI flash tool (PinecilV1/V2)</h3>
+<p>If you normally upload your firmware using a helper application, they should accept the files from the bootlogo the same as the normal firmware.
+Try the <code>.dfu</code> file first and then the <code>.hex</code>. If neither work then the application may not be updated to be able to handle boot logos. And you may need to use a different/newer tool.</p>
+<h3 id="upload-via-dfu-util-pinecilv1ironos-dfu">Upload via dfu-util (PinecilV1/IronOS-DFU)</h3>
+<p>For the PinecilV1 and for any devices that have been converted to use <code>IronOS-DFU</code> as the bootloader you can flash these via the <code>dfu-util</code> command line tool.
+For these flash as per usual using the <code>.dfu</code> file. Afterwards power cycle and the logo should show up.</p>
+<h3 id="upload-via-blisp-pinecilv2">Upload via blisp (PinecilV2)</h3>
+<p>For the PinecilV2 we suggest <code>blisp</code> as the command line tool to use if you are not using a GUI tool. <code>blsip</code> has been updated to accept <code>.dfu</code> files as well as the <code>.bin</code> files it historically used. As such you use the <code>.dfu</code> file for the logo and flash as per normal otherwise and it will work and reboot at the end. It should show you your new logo after flashing.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../Temperature/" class="btn btn-neutral float-left" title="Temperature"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../HallSensor/" class="btn btn-neutral float-right" title="Hall Sensor (Pinecil)">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/ralim/IronOS/" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../Temperature/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../HallSensor/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
