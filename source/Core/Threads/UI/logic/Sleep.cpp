@@ -19,11 +19,8 @@ OperatingMode gui_SolderingSleepingMode(const ButtonState buttons, guiContext *c
     // Hibernating mode
     currentTempTargetDegC = 0;
   } else {
-    if (getSettingValue(SettingsOptions::TemperatureInF)) {
-      currentTempTargetDegC = TipThermoModel::convertFtoC(min(getSettingValue(SettingsOptions::SleepTemp), getSettingValue(SettingsOptions::SolderingTemp)));
-    } else {
-      currentTempTargetDegC = min(getSettingValue(SettingsOptions::SleepTemp), getSettingValue(SettingsOptions::SolderingTemp));
-    }
+    uint16_t sleepTemp = getSettingValue(SettingsOptions::SleepTemp);
+    currentTempTargetDegC = getSettingValue(SettingsOptions::TemperatureInF) ? TipThermoModel::convertFtoC(sleepTemp) : sleepTemp;
   }
   // draw the lcd
   uint16_t tipTemp = getSettingValue(SettingsOptions::TemperatureInF) ? TipThermoModel::getTipInF() : TipThermoModel::getTipInC();
