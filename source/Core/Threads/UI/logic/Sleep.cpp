@@ -19,11 +19,11 @@ OperatingMode gui_SolderingSleepingMode(const ButtonState buttons, guiContext *c
     // Hibernating mode
     currentTempTargetDegC = 0;
   } else {
-    if (getSettingValue(SettingsOptions::TemperatureInF)) {
-      currentTempTargetDegC = TipThermoModel::convertFtoC(min(getSettingValue(SettingsOptions::SleepTemp), getSettingValue(SettingsOptions::SolderingTemp)));
-    } else {
-      currentTempTargetDegC = min(getSettingValue(SettingsOptions::SleepTemp), getSettingValue(SettingsOptions::SolderingTemp));
-    }
+    // see https://github.com/Ralim/IronOS/issues/2033 for more details on this
+    uint16_t sleepTemp     = getSettingValue(SettingsOptions::SleepTemp);
+    uint16_t solderingTemp = getSettingValue(SettingsOptions::SolderingTemp);
+    uint16_t targetTemp    = getSettingValue(SettingsOptions::AutoStartMode) == autoStartMode_t::SLEEP ? sleepTemp : min(solderingTemp, sleepTemp);
+    currentTempTargetDegC  = getSettingValue(SettingsOptions::TemperatureInF) ? TipThermoModel::convertFtoC(targetTemp) : targetTemp;
   }
   // draw the lcd
   uint16_t tipTemp = getSettingValue(SettingsOptions::TemperatureInF) ? TipThermoModel::getTipInF() : TipThermoModel::getTipInC();
